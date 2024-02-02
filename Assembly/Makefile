@@ -1,34 +1,16 @@
-sqr: sqr.s
-	gcc -static -o sqr sqr.s
+# List of assembly files
+ASSEMBLY_FILES = addarray.s avg.s fibonnaci.s helloworld.s maxmin.s squared.s printadd.s selectionsort.s strlen.s
 
-maxarray: maxarray.s maxarray.c
-	gcc -static -o maxarray maxarray.c maxarray.s
+# List of executables
+EXECUTABLES = $(ASSEMBLY_FILES:.s=)
 
-selection: selection.s
-	gcc -static -g -o selection selection.c selection.s
+# Compilation rule for each assembly file
+%: %.s
+	gcc -static -g -o $@ $<
 
-avg: avg.s
-	gcc -static -o avg avg.s
+# Target to build all executables
+all: $(EXECUTABLES)
 
-maxmin: maxmin.s
-	gcc -static -g -o maxmin maxmin.s
-
-helloCS250: helloCS250.s
-	gcc -static -o helloCS250 helloCS250.s
-
-addarray: addarray.s
-	gcc -static -g -o addarray addarray.s
-
-mem: mem.c
-	gcc -g -o mem mem.c
-
-prints: prints.s
-	gcc -static -g -o prints prints.s
-
-rangeArray: rangeArray.s
-	gcc -static -g -o rangeArray rangeArray.c rangeArray.s
-
+# Target to clean all executables
 clean:
-	rm -f sqr maxarray selection avg
-
-	
+	rm -f $(EXECUTABLES)
