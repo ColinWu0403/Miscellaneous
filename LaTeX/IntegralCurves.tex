@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.8}
+\usepackage{amsmath}
+
+\title{Integral Curves Template}
+\author{ColinWu0403}
+\date{January 2024}
+
+\maketitle
+
+\pgfplotsset{ % Define a common style, so we don't repeat ourselves
+    MaoYiyi/.style={
+        width=1.2\textwidth, % Overall width of the plot
+        axis equal image, % Unit vectors for both axes have the same length
+        view={0}{90}, % We need to use "3D" plots, but we set the view so we look at them from straight up
+        xmin=-5, xmax=5, % Axis limits
+        ymin=-5, ymax=5,
+        domain=-5:5, y domain=-5:5, % Domain over which to evaluate the functions
+        xtick={0,5,2,3,4,1,-5,-2,-3,-4,-1}, ytick={0,5,2,3,4,1,-5,-2,-3,-4,-1}, % Tick marks
+        samples=12, % How many arrows?
+        cycle list={    % Plot styles
+                gray,
+                quiver={
+                    u={1}, v={f(x)}, % End points of the arrows
+                    scale arrows=0.175,
+                    every arrow/.append style={
+                        -latex % Arrow tip
+                    },
+                }\\
+                red, samples=31, smooth, thick, no markers, domain=-5:5.1\\ % The plot style for the function
+                blue, samples=100, smooth, thick, no markers, domain=-5:5\\
+                green, samples=100, smooth, thick, no markers, domain=-5:5\\
+                orange, samples=100, smooth, thick, no markers, domain=-5:5\\
+                purple, samples=100, smooth, thick, no markers, domain=-5:5\\
+        },
+        axis lines=middle, % Add axis lines
+        axis on top, % Draw axis lines on top
+        
+    }
+}
+
+\begin{document}
+\section{Question 1: Suppose that a, b are constants, with a not equal to 0}
+a = b = 1\\\\
+c = 1, 2, 0.5, -1, -2\\\\
+\begin{tikzpicture}[
+    declare function={f(\x) = -y+1;} % Define which function we're using
+]
+\begin{axis}[
+    MaoYiyi, title={$\dfrac{\mathrm{d}y}{\mathrm{d}x}=-y+1$}
+]
+\addplot3 (x,y,0);
+
+% plot integral curves
+\addplot {1+e^(-x)};
+\addplot {1+2*e^(-x)};
+\addplot {1+0.5*e^(-x)};
+\addplot {1-e^(-x)};
+\addplot {1-2*e^(-x)};
+\end{axis}
+\end{tikzpicture}
+
+
+
+\end{document} 
+
