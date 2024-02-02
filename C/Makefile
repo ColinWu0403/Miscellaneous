@@ -1,5 +1,5 @@
 # List of C files
-C_FILES = bitrange.c endian.c expensivebook.c hailstorm.c printvar.c review.c selectionsort.c swapprev.c
+C_FILES = bitrange.c endian.c endianconversion.c expensivebook.c hailstorm.c printvar.c review.c selectionsort.c swapprev.c
 
 # List of executables
 EXECUTABLES = $(C_FILES:.c=)
