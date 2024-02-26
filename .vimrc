@@ -1,4 +1,13 @@
-"This is my config for Vim, even though I hate using Vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
+"               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
+"               ██║   ██║██║██╔████╔██║██████╔╝██║
+"               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
+"                ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
+"                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " display line numbers on the sidebar
 set number
@@ -137,3 +146,51 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+" Set Default Color Scheme from ~/.vim/colors
+colorscheme molokai
+
+" PLUGINS ---------------------------------------------------------------- {{{
+
+call plug#begin('~/.vim/plugged')
+
+
+  Plug 'dense-analysis/ale'
+
+  Plug 'preservim/nerdtree'
+
+  Plug 'vim-airline/vim-airline'
+
+  Plug 'terryma/vim-smooth-scroll'
+
+  Plug 'wfxr/minimap.vim'
+
+call plug#end()
+
+" }}}
+
+" STATUS LINE ------------------------------------------------------------ {{{
+
+" Clear status line when vimrc is reloaded.
+set statusline=
+
+" Status line left side.
+set statusline+=\ %F\ %M\ %Y\ %R
+
+" Use a divider to separate the left side from the right side.
+set statusline+=%=
+
+" Status line right side.
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+
+" Show the status on the second to last line.
+set laststatus=2
+
+" }}}
+
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+
+" VScode style minimap settings
+let g:minimap_width = 10
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
