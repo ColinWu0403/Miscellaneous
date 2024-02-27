@@ -9,6 +9,10 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" This is my custom .vimrc that makes Vim more usable.
+" There are a few plugins that are installed, to install them type in :PlugInstall into the Vim command line
+" For the minimap.vim plugin, you will need to also install code-minimap from https://github.com/wfxr/code-minimap
+
 " display line numbers on the sidebar
 set number
 
